@@ -6,7 +6,41 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setError("");
+
+    const url =
+      signState === "Se connecter" ? "/api/auth/login" : "/api/auth/register";
+
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      console.log("stringify", JSON.stringify({ email, password }));
+
+      const data = await res.json();
+      console.log("res.json:", data);
+
+      if (!res.ok) {
+        setError(data.message || "erreuur");
+        return;
+      }
+
+      if (signState === "Se connecter") {
+        nav("/");
+      } else {
+        setSignState("Se connecter");
+      }
+    } catch (err) {
+      setError("Erreur serveur");
+    }
+  };
 
   return (
     <>
