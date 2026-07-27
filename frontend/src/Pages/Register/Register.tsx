@@ -51,7 +51,8 @@ const Register = () => {
       console.log("res.json : ", data);
 
       if (!res.ok) {
-        setError(data.message || "erreuur");
+        // setError(data.message || "erreuur");
+        setError(data.error || " erreuur");
         return;
       }
     } catch (err) {

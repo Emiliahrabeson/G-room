@@ -21,8 +21,10 @@ export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
     const { user, token } = await authService.login(email, password);
+    // enlever le mdp
+    const { password_hash, ...safeUser } = user;
 
-    res.status(200).json(user);
+    res.status(200).json({ user: safeUser, token });
   } catch (err) {
     res.status(401).json({ error: err.message });
   }
