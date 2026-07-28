@@ -1,17 +1,52 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
+import "./login.css";
 
 const Login = () => {
-  const [signState, setSignState] = useState("Se connecter");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = () => {};
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+
+    const url = "http://localhost:3000/api/auth/login";
+
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      console.log("stringify", JSON.stringify({ email, password }));
+
+      const data = await res.json();
+      console.log("res.json:", data);
+
+      if (res.ok) {
+        // Sauvegarder le token
+        localStorage.setItem("token", data.token);
+
+        navigate("/home");
+      } else {
+        setError(data.error);
+      }
+    } catch (err) {
+      setError(err.message);
+    }
+  };
 
   return (
     <>
       <div className="login-cadre">
-        <h2>{signState}</h2>
+        <h2>Se connecter</h2>
         <div className="app-name">
           <p>G-room</p>
           <p>Réservation de salles</p>
@@ -36,24 +71,12 @@ const Login = () => {
 
           {error && <p className="error">{error}</p>}
 
-          <button type="submit">{signState}</button>
+          <button type="submit">Se connecter</button>
 
           <div className="change-form">
-            {signState === "Se connecter" ? (
-              <>
-                <p>Pas de compte?</p>
-                <span onClick={() => setSignState("S'inscrire")}>
-                  S'inscrire
-                </span>
-              </>
-            ) : (
-              <>
-                <p>Vous avez déjà un compte?</p>
-                <span onClick={() => setSignState("Se connecter")}>
-                  Se connecter
-                </span>
-              </>
-            )}
+            <p>Pas de compte ?</p>
+
+            <Link to="/register">S'inscrire</Link>
           </div>
         </form>
       </div>
