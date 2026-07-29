@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
+import Liste from "./Pages/Liste/Liste.tsx";
 import Layout from "./Components/Layout/Layout";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route element={<Layout />}>
           <Route path="/home" element={<Home />} />
+          <Route path="/liste" element={<Liste />} />
         </Route>
       </Routes>
     </>

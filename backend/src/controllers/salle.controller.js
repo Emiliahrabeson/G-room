@@ -28,3 +28,12 @@ export const getStatistiques = async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 };
+
+export const getSallesDetaillees = async (req, res) => {
+  try {
+    const salles = await salleService.getSallesDetaillees();
+    res.status(200).json(salles);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};

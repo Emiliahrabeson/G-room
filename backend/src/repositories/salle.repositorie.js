@@ -37,3 +37,22 @@ export async function getStatistiques() {
 
   return result[0];
 }
+// liste detail
+export async function getSalles() {
+  const sql =
+    "SELECT id_salle, nom, capacite, equipements, statut FROM salles ORDER BY nom;";
+  const [result] = await db.query(sql);
+  return result;
+}
+
+export async function getReservationsAujourdhui() {
+  const sql = `
+    SELECT r.id_salle, c.heure_debut, c.heure_fin
+    FROM reservations r
+    JOIN creneaux c ON c.id_creneau = r.id_creneau
+    WHERE r.date_reservation = CURDATE()
+      AND r.statut = 'confirmee';
+  `;
+  const [result] = await db.query(sql);
+  return result;
+}

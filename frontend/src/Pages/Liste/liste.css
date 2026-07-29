@@ -1,0 +1,135 @@
+/* === Recherche + filtres === */
+.filtre {
+  margin-left: 240px;
+  padding: 24px 32px 32px;
+}
+
+/* === Barre de recherche === */
+.filtre form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.filtre form input[type="text"] {
+  flex: 1;
+  padding: 12px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #1c2333;
+  background-color: #faf9f6;
+  border: 1px solid #e3dfd3;
+  border-radius: 10px;
+  outline: none;
+}
+
+.filtre form input[type="text"]::placeholder {
+  color: #a6abb8;
+}
+
+.filtre form input[type="text"]:focus {
+  background-color: #ffffff;
+  border-color: #b9832a;
+}
+
+.filtre form button[type="submit"] {
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid #e3dfd3;
+  background-color: #faf9f6;
+  color: #1c2333;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.filtre form button[type="submit"]:hover {
+  border-color: #cfc8b4;
+}
+
+/* === Boutons de filtre (équivalent .chip) === */
+.filtre-button {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.filtre-button button {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid #e3dfd3;
+  background-color: #faf9f6;
+  color: #4b5165;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  margin: 0;
+}
+
+.filtre-button button:hover {
+  border-color: #cfc8b4;
+}
+
+.filtre-button button.active {
+  background-color: #1c2333;
+  color: #ffffff;
+  border-color: #1c2333;
+}
+
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  background-color: #ffffff;
+  border: 1px solid #e3dfd3;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.content th {
+  background: #f7f5ef;
+  color: #6a7086;
+  font-size: 11px;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 14px;
+  border-bottom: 2px solid #e3dfd3;
+}
+
+.content td {
+  padding: 14px;
+  border-bottom: 1px solid #f0ede4;
+  color: #1c2333;
+}
+
+.content tbody tr:hover {
+  background-color: #fafafa;
+}
+
+/* === Badges d'état === */
+.badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.badge-ok {
+  background-color: #dff6e5;
+  color: #17813c;
+}
+
+.badge-busy {
+  background-color: #ffe0e0;
+  color: #b10000;
+}
+
+.badge-maintenance {
+  background-color: #fff4d6;
+  color: #b9832a;
+}
