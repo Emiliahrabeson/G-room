@@ -5,16 +5,20 @@ import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
 import Liste from "./Pages/Liste/Liste.tsx";
 import Layout from "./Components/Layout/Layout";
+import PrivateRoute from "./routes/PrivateRoute";
 
 function App() {
   return (
     <>
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route element={<Layout />}>
-          <Route path="/home" element={<Home />} />
-          <Route path="/liste" element={<Liste />} />
+        <Route element={<PrivateRoute />}>
+          <Route element={<Layout />}>
+            <Route path="/home" element={<Home />} />
+            <Route path="/liste" element={<Liste />} />
+          </Route>
         </Route>
       </Routes>
     </>

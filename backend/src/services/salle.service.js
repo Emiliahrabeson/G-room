@@ -1,4 +1,5 @@
 import * as salleRepositories from "../repositories/salle.repositorie.js";
+import * as reservationRepositories from "../repositories/reservation.repositorie.js";
 
 export async function getListe() {
   const liste = await salleRepositories.getListeSalle();
@@ -18,7 +19,8 @@ export async function getStatistiques() {
 
 export async function getSallesDetaillees() {
   const salles = await salleRepositories.getSalles();
-  const reservations = await salleRepositories.getReservationsAujourdhui();
+  const reservations =
+    await reservationRepositories.getReservationsAujourdhui();
 
   const resultat = [];
 
