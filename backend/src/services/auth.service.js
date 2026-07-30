@@ -20,6 +20,7 @@ export async function login(email, password) {
     {
       id: user.id_user,
       email: user.email,
+      role: user.role,
     },
     process.env.JWT_SECRET,
     {

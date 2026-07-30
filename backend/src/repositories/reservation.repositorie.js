@@ -39,3 +39,62 @@ export async function getReservationsSemaine(id_salle, date_debut, date_fin) {
   const [result] = await db.query(sql, [id_salle, date_debut, date_fin]);
   return result;
 }
+
+export async function estDisponible(id_salle, id_creneau, date_reservation) {
+  const sql = `
+    SELECT COUNT(*) AS nb
+    FROM reservations
+    WHERE id_salle = ?
+      AND id_creneau = ?
+      AND date_reservation = ?
+      AND statut IN ('confirmee', 'en_attente');
+  `;
+  const [result] = await db.query(sql, [
+    id_salle,
+    id_creneau,
+    date_reservation,
+  ]);
+  return result[0].nb === 0;
+}
+
+export async function creerReservation(
+  id_user,
+  id_salle,
+  id_creneau,
+  date_reservation,
+  motif,
+  description,
+  statut,
+) {
+  const sql = `
+    INSERT INTO reservations (id_user, id_salle, id_creneau, date_reservation, motif, description, statut)
+    VALUES (?, ?, ?, ?, ?, ?, ?);
+  `;
+  const [result] = await db.query(sql, [
+    id_user,
+    id_salle,
+    id_creneau,
+    date_reservation,
+    motif,
+    description,
+    statut,
+  ]);
+  return result;
+}
+
+export async function getCreneauxDisponibles(id_salle, date_reservation) {
+  const sql = `
+    SELECT c.id_creneau, c.heure_debut, c.heure_fin
+    FROM creneaux c
+    WHERE c.id_creneau NOT IN (
+      SELECT r.id_creneau
+      FROM reservations r
+      WHERE r.id_salle = ?
+        AND r.date_reservation = ?
+        AND r.statut IN ('confirmee', 'en_attente')
+    )
+    ORDER BY c.heure_debut;
+  `;
+  const [result] = await db.query(sql, [id_salle, date_reservation]);
+  return result;
+}

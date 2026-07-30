@@ -48,3 +48,59 @@ export async function getDemande() {
     };
   });
 }
+
+export async function creerReservation(
+  id_user,
+  role,
+  id_salle,
+  id_creneau,
+  date_reservation,
+  motif,
+  description,
+) {
+  if (!id_salle || !id_creneau || !date_reservation || !motif) {
+    console.log("Salle, créneau, date et objet sont obligatoires");
+    return;
+  }
+
+  const disponible = await reservationRepositories.estDisponible(
+    id_salle,
+    id_creneau,
+    date_reservation,
+  );
+
+  if (!disponible) {
+    throw new Error("Ce créneau est déjà réservé pour cette salle");
+  }
+  const statut = "";
+  if (role === "enseignant") {
+    statut = "confirmee";
+  } else {
+    statut = "en_attente";
+  }
+  // const statut = role === "enseignant" ? "confirmee" : "en_attente";
+
+  const id_reservation = await reservationRepositories.creerReservation(
+    id_user,
+    id_salle,
+    id_creneau,
+    date_reservation,
+    motif,
+    description,
+    statut,
+  );
+
+  return { id_reservation, statut };
+}
+
+export async function getCreneauxDisponibles(id_salle, date_reservation) {
+  const creneaux = await reservationRepositories.getCreneauxDisponibles(
+    id_salle,
+    date_reservation,
+  );
+
+  return creneaux.map((c) => ({
+    id_creneau: c.id_creneau,
+    label: `${formatHeure(c.heure_debut)} - ${formatHeure(c.heure_fin)}`,
+  }));
+}

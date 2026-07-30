@@ -7,6 +7,7 @@ import Liste from "./Pages/Liste/Liste.tsx";
 import Demande from "./Pages/Demande/Demande.tsx";
 import Planning from "./Pages/Planning/Planning.tsx";
 import Gestion from "./Pages/Gestion/Gestion.tsx";
+import Reservation from "./Pages/Reservation/Reservation.tsx";
 import Layout from "./Components/Layout/Layout";
 import PrivateRoute from "./routes/PrivateRoute";
 
@@ -24,6 +25,7 @@ function App() {
             <Route path="/demande" element={<Demande />} />
             <Route path="/planning" element={<Planning />} />
             <Route path="/gestion" element={<Gestion />} />
+            <Route path="/reservation" element={<Reservation />} />
           </Route>
         </Route>
       </Routes>
