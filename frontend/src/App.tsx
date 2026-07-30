@@ -4,6 +4,7 @@ import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
 import Liste from "./Pages/Liste/Liste.tsx";
+import Demande from "./Pages/Demande/Demande.tsx";
 import Layout from "./Components/Layout/Layout";
 import PrivateRoute from "./routes/PrivateRoute";
 
@@ -18,6 +19,7 @@ function App() {
           <Route element={<Layout />}>
             <Route path="/home" element={<Home />} />
             <Route path="/liste" element={<Liste />} />
+            <Route path="/demande" element={<Demande />} />
           </Route>
         </Route>
       </Routes>
