@@ -84,3 +84,30 @@ function estEnCours(heure_debut, heure_fin) {
   const maintenant = new Date().toTimeString().slice(0, 8);
   return maintenant >= heure_debut && maintenant <= heure_fin;
 }
+
+export async function ajouterSalle(nom, capacite, equipements) {
+  if (!nom || !capacite) {
+    throw new Error("Le nom et la capacité sont obligatoires");
+  }
+  return await salleRepositories.ajouterSalle(nom, capacite, equipements);
+}
+
+export async function modifierSalle(id_salle, nom, capacite, equipements) {
+  return await salleRepositories.modifierSalle(
+    id_salle,
+    nom,
+    capacite,
+    equipements,
+  );
+}
+
+export async function changerStatutSalle(id_salle, statut) {
+  if (statut !== "active" && statut !== "inactive") {
+    throw new Error("Statut invalide");
+  }
+  return await salleRepositories.changerStatutSalle(id_salle, statut);
+}
+
+export async function supprimerSalle(id_salle) {
+  return await salleRepositories.supprimerSalle(id_salle);
+}

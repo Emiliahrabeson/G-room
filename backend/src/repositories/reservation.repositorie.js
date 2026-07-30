@@ -27,3 +27,15 @@ export async function getDemande() {
 
   return result;
 }
+
+export async function getReservationsSemaine(id_salle, date_debut, date_fin) {
+  const sql = `
+    SELECT r.id_creneau, r.date_reservation, r.motif
+    FROM reservations r
+    WHERE r.id_salle = ?
+      AND r.date_reservation BETWEEN ? AND ?
+      AND r.statut = 'confirmee';
+  `;
+  const [result] = await db.query(sql, [id_salle, date_debut, date_fin]);
+  return result;
+}
