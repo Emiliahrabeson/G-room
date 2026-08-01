@@ -22,7 +22,7 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background-color: #b9832a;
+  background-color: #1c2333;
   color: #ffffff;
   font-size: 13px;
   font-weight: 700;
@@ -82,7 +82,7 @@ textarea {
   width: 100%;
   padding: 10px 12px;
   border-radius: 8px;
-  border: 1px solid #e3dfd3;
+  border: 1px solid #1c2333;
   background-color: #faf9f6;
   color: #1c2333;
   font-size: 13px;
@@ -93,7 +93,7 @@ input:focus,
 select:focus,
 textarea:focus {
   outline: none;
-  border-color: #b9832a;
+  border-color: #1c2333;
 }
 
 textarea {
@@ -104,8 +104,8 @@ textarea {
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  background-color: #fbf1dd;
-  color: #8a6318;
+  background-color: #fff;
+  color: #1c2333;
   font-size: 12px;
   padding: 12px 14px;
   border-radius: 10px;
@@ -114,10 +114,10 @@ textarea {
 
 .error {
   color: #c0392b;
-  background-color: #fdecea;
+  background-color: #89aec4;
   padding: 10px 16px;
   border-radius: 8px;
-  border: 1px solid #e1a6a6;
+  border: 1px solid #1c2333;
   font-size: 13px;
   margin-bottom: 16px;
 }
@@ -144,7 +144,7 @@ textarea {
 }
 
 .btn:hover {
-  border-color: #cfc8b4;
+  border-color: #414f70;
 }
 
 .btn-primary {
