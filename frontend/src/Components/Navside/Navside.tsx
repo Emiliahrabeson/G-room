@@ -9,7 +9,7 @@ const element_link: Link_title[] = [
   { nom: "Tableau de bord", link: "Home" },
   { nom: "Liste des salles", link: "liste" },
   { nom: "Planning", link: "planning" },
-  { nom: "Réserver une salle", link: "reserver" },
+  { nom: "Réserver une salle", link: "reservation" },
   { nom: "Demandes en attente", link: "demande" },
   { nom: "Gestion des salles", link: "gestion" },
   { nom: "Statistiques", link: "statistique" },

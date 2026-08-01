@@ -1,0 +1,103 @@
+.title_bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.title_bar h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1c2333;
+  margin: 0;
+}
+
+.title_bar p {
+  font-size: 13px;
+  color: #6a7086;
+  margin-top: 4px;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #1c2333;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  background-color: #ffffff;
+  border: 1px solid #1c2333;
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.planning-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.planning-header select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #e3dfd3;
+  background-color: #faf9f6;
+  color: #1c2333;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.planning-header span {
+  font-size: 13px;
+  color: #6a7086;
+}
+
+.planning-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.planning-table th {
+  text-align: left;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #6a7086;
+  padding: 8px 10px;
+  border-bottom: 1px solid #e3dfd3;
+}
+
+.planning-table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #f0ede4;
+  color: #1c2333;
+  vertical-align: middle;
+}
+
+.planning-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.planning-table td.reserved {
+  background-color: #a0baf8;
+  color: #1c2333;
+  font-weight: 600;
+  border-radius: 6px;
+}
+
+.error {
+  color: #c0392b;
+  background-color: #fdecea;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid #e1a6a6;
+  font-size: 13px;
+}

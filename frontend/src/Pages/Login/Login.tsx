@@ -31,8 +31,8 @@ const Login = () => {
       console.log("res.json:", data);
 
       if (res.ok) {
-        // Sauvegarder le token
         localStorage.setItem("token", data.token);
+        localStorage.setItem("role", data.user.role);
 
         navigate("/home");
       } else {

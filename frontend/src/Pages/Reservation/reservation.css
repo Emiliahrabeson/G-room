@@ -1,0 +1,159 @@
+.title_bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.title_bar h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1c2333;
+  margin: 0;
+}
+
+.title_bar p {
+  font-size: 13px;
+  color: #6a7086;
+  margin-top: 4px;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #1c2333;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.card {
+  background-color: #ffffff;
+  border: 1px solid #e3dfd3;
+  border-radius: 14px;
+  padding: 24px;
+  max-width: 600px;
+  margin-left: 600px;
+}
+
+.section-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1c2333;
+  margin-bottom: 18px;
+}
+
+.field-row {
+  margin-bottom: 16px;
+}
+
+.field-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6a7086;
+  margin-bottom: 6px;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.two-col .field-label {
+  margin-bottom: 6px;
+}
+
+input[type="text"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #1c2333;
+  background-color: #faf9f6;
+  color: #1c2333;
+  font-size: 13px;
+  font-family: inherit;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #1c2333;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.hint {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background-color: #fff;
+  color: #1c2333;
+  font-size: 12px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  margin-bottom: 18px;
+}
+
+.error {
+  color: #c0392b;
+  background-color: #89aec4;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid #1c2333;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.succes {
+  color: #1e7a3d;
+  background-color: #e6f4ea;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid #a8d5b5;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.btn {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 1px solid #e3dfd3;
+  background-color: #faf9f6;
+  color: #1c2333;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn:hover {
+  border-color: #414f70;
+}
+
+.btn-primary {
+  background-color: #1c2333;
+  color: #ffffff;
+  border: none;
+  width: 100%;
+}
+
+.btn-primary:hover {
+  background-color: #2a3350;
+}

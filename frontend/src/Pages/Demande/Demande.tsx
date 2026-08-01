@@ -1,15 +1,14 @@
 import { useState, useEffect } from "react";
-import "./home.css";
+import "./demande.css";
 
-const Home = () => {
+const Demande = () => {
   const [demande, setDemande] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchDemande = async () => {
-      const url =
-        "http://localhost:3000/api/reservations/reservation_confirmees";
+      const url = "http://localhost:3000/api/reservations/demande";
       try {
         const res = await fetch(url, {
           method: "GET",
@@ -40,8 +39,8 @@ const Home = () => {
   return (
     <>
       <div className="title_bar">
-        <h1>Tableau de bord</h1>
-        <p>Liste de toutes les reservations</p>
+        <h1>Les demandes de réservation de salles</h1>
+        <p>Vue d'ensemble de toutes les demandes</p>
 
         <div className="avatar">RH</div>
       </div>
@@ -54,19 +53,30 @@ const Home = () => {
           <table>
             <thead>
               <tr>
-                <th>Salle</th>
+                <th>Demandeur</th>
+                <th>Rôle</th>
+                <th>Salle demandée</th>
                 <th>Date / Horaire</th>
-                <th>objet</th>
+                <th>Motif</th>
                 <th>Statut</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
               {demande.map((d) => (
-                <tr key={d.nom_salle}>
+                <tr key={d.nom}>
+                  <td>{d.nom}</td>
+                  <td>{d.role}</td>
                   <td>{d.nom_salle}</td>
                   <td>{d.date_horaire}</td>
                   <td>{d.motif}</td>
                   <td>{d.statut}</td>
+                  <td>
+                    <div className="action-btn">
+                      <button>A</button>
+                      <button>R</button>
+                    </div>
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -77,4 +87,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Demande;
