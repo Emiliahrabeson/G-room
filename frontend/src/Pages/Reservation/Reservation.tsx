@@ -64,12 +64,13 @@ const Reservation = () => {
 
   // Recharger les créneaux disponibles à chaque changement de salle ou de date
   useEffect(() => {
-    if (!idSalle || !date) {
-      setCreneaux([]);
-      return;
-    }
-
     const chargerCreneaux = async () => {
+      if (!idSalle || !date) {
+        setCreneaux([]);
+        setIdCreneau(null);
+        return;
+      }
+
       try {
         const data = await fetchApi(
           `/reservations/creneaux-disponibles?id_salle=${idSalle}&date=${date}`,

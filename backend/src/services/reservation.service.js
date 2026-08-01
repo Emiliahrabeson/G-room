@@ -49,6 +49,21 @@ export async function getDemande() {
   });
 }
 
+export async function getReservation_confirmees() {
+  const reservations =
+    await reservationRepositories.getReservation_confirmees();
+  return reservations.map((d) => {
+    const statutInfo = STATUT_LABELS[d.statut] || { label: d.statut };
+
+    return {
+      nom_salle: d.nom_salle,
+      motif: d.motif,
+      date_horaire: `${formatDate(d.date_reservation)}, ${formatHeure(d.heure_debut)} - ${formatHeure(d.heure_fin)}`,
+      statut: statutInfo.label,
+    };
+  });
+}
+
 export async function creerReservation(
   id_user,
   role,
@@ -72,13 +87,13 @@ export async function creerReservation(
   if (!disponible) {
     throw new Error("Ce créneau est déjà réservé pour cette salle");
   }
-  const statut = "";
-  if (role === "enseignant") {
-    statut = "confirmee";
-  } else {
-    statut = "en_attente";
-  }
-  // const statut = role === "enseignant" ? "confirmee" : "en_attente";
+  // const statut = "";
+  // if (role === "enseignant") {
+  //   statut = "confirmee";
+  // } else {
+  //   statut = "en_attente";
+  // }
+  const statut = role === "enseignant" ? "confirmee" : "en_attente";
 
   const id_reservation = await reservationRepositories.creerReservation(
     id_user,

@@ -8,7 +8,7 @@ const Demande = () => {
 
   useEffect(() => {
     const fetchDemande = async () => {
-      const url = "http://localhost:3000/api/reservation/demande";
+      const url = "http://localhost:3000/api/reservations/demande";
       try {
         const res = await fetch(url, {
           method: "GET",

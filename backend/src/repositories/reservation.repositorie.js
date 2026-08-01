@@ -28,6 +28,21 @@ export async function getDemande() {
   return result;
 }
 
+export async function getReservation_confirmees() {
+  const sql = `
+    SELECT u.nom, u.role , s.nom as nom_salle, c.heure_debut, r.date_reservation, r.motif, r.statut, c.heure_fin
+    FROM reservations r
+    JOIN creneaux c ON c.id_creneau = r.id_creneau
+    JOIN salles s ON s.id_salle = r.id_salle
+    JOIN utilisateurs u ON r.id_user = u.id_user
+    ORDER BY r.date_reservation, c.heure_debut;
+  `;
+
+  const [result] = await db.query(sql);
+
+  return result;
+}
+
 export async function getReservationsSemaine(id_salle, date_debut, date_fin) {
   const sql = `
     SELECT r.id_creneau, r.date_reservation, r.motif

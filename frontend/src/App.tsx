@@ -8,6 +8,7 @@ import Demande from "./Pages/Demande/Demande.tsx";
 import Planning from "./Pages/Planning/Planning.tsx";
 import Gestion from "./Pages/Gestion/Gestion.tsx";
 import Reservation from "./Pages/Reservation/Reservation.tsx";
+import Statistique from "./Pages/Statistique/Statistique.tsx";
 import Layout from "./Components/Layout/Layout";
 import PrivateRoute from "./routes/PrivateRoute";
 
@@ -26,6 +27,7 @@ function App() {
             <Route path="/planning" element={<Planning />} />
             <Route path="/gestion" element={<Gestion />} />
             <Route path="/reservation" element={<Reservation />} />
+            <Route path="/statistique" element={<Statistique />} />
           </Route>
         </Route>
       </Routes>

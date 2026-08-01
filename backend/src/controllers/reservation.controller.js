@@ -9,6 +9,15 @@ export const getDemande = async (req, res) => {
   }
 };
 
+export const getReservation_confirmees = async (req, res) => {
+  try {
+    const reservations = await reservationService.getReservation_confirmees();
+    res.status(200).json(reservations);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
 export const creerReservation = async (req, res) => {
   try {
     const { id_salle, id_creneau, date_reservation, motif, description } =
