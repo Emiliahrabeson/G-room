@@ -14,10 +14,28 @@ const filtres = [
   "Toutes",
   "Capacité 20+",
   "Capacité 50+",
-  "Vidéoprojecteur",
+  "Projecteur",
   "Wi-Fi",
   "Sonorisation",
 ];
+
+function extraireCapacite(capaciteStr: string) {
+  return parseInt(capaciteStr, 10);
+}
+
+function correspondAuFiltre(salle: Salle, filtre: string) {
+  if (filtre === "Toutes") return true;
+
+  if (filtre === "Capacité 20+") {
+    return extraireCapacite(salle.capacite) >= 20;
+  }
+
+  if (filtre === "Capacité 50+") {
+    return extraireCapacite(salle.capacite) >= 50;
+  }
+
+  return salle.equipements.toLowerCase().includes(filtre.toLowerCase());
+}
 
 const Liste = () => {
   const [salles, setSalles] = useState<Salle[]>([]);
@@ -56,9 +74,11 @@ const Liste = () => {
     fetchSalles();
   }, []);
 
-  const salles_filtrees = salles.filter((salle) =>
-    salle.nom.toLowerCase().includes(search_term.toLowerCase()),
-  );
+  const salles_filtrees = salles
+    .filter((salle) =>
+      salle.nom.toLowerCase().includes(search_term.toLowerCase()),
+    )
+    .filter((salle) => correspondAuFiltre(salle, activeFilter));
 
   return (
     <>
@@ -77,7 +97,6 @@ const Liste = () => {
             value={search_term}
             onChange={(e) => setSearch_term(e.target.value)}
           />
-          <button type="submit">Recherche</button>
         </form>
         <div className="filtre-button">
           {filtres.map((filtre) => (
