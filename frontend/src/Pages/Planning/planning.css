@@ -1,5 +1,3 @@
-/* planning.css */
-
 .title_bar {
   display: flex;
   align-items: center;
@@ -24,7 +22,7 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background-color: #b9832a;
+  background-color: #1c2333;
   color: #ffffff;
   font-size: 13px;
   font-weight: 700;
@@ -35,7 +33,7 @@
 
 .content {
   background-color: #ffffff;
-  border: 1px solid #e3dfd3;
+  border: 1px solid #1c2333;
   border-radius: 14px;
   padding: 20px;
 }
@@ -89,8 +87,8 @@
 }
 
 .planning-table td.reserved {
-  background-color: #fbf1dd;
-  color: #b9832a;
+  background-color: #a0baf8;
+  color: #1c2333;
   font-weight: 600;
   border-radius: 6px;
 }
