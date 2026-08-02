@@ -35,8 +35,8 @@ body {
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: #b9832a;
-  background: #fbf1dd;
+  color: #03153b;
+  background: #4972c9;
   padding: 7px 0;
   border-radius: 999px;
   margin-bottom: 20px;
@@ -80,7 +80,6 @@ select {
 
 input:focus,
 select:focus {
-  border-color: #b9832a;
   background: #fff;
   box-shadow: 0 0 0 3px rgba(185, 131, 42, 0.15);
 }
@@ -131,7 +130,7 @@ button:hover {
 }
 
 .change-form span {
-  color: #b9832a;
+  color: #0c2147;
   cursor: pointer;
   font-weight: 600;
 }
@@ -140,7 +139,6 @@ button:hover {
   text-decoration: underline;
 }
 .change-form a {
-  color: #b9832a;
   font-weight: 600;
   text-decoration: none;
 }

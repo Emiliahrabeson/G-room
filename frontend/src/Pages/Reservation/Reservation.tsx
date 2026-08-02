@@ -125,7 +125,10 @@ const Reservation = () => {
         <h1>Réserver une salle</h1>
         <p>Créer une nouvelle réservation</p>
 
-        <div className="avatar">RH</div>
+        <div className="avatar">
+          {(localStorage.getItem("prenom")?.[0] ?? "") +
+            (localStorage.getItem("nom")?.[0] ?? "")}
+        </div>
       </div>
 
       <div className="grid">

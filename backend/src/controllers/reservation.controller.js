@@ -18,27 +18,27 @@ export const getReservation_confirmees = async (req, res) => {
   }
 };
 
-export const creerReservation = async (req, res) => {
-  try {
-    const { id_salle, id_creneau, date_reservation, motif, description } =
-      req.body;
-    const { id: id_user, role } = req.user;
+// export const creerReservation = async (req, res) => {
+//   try {
+//     const { id_salle, id_creneau, date_reservation, motif, description } =
+//       req.body;
+//     const { id: id_user, role } = req.user;
 
-    const resultat = await reservationService.creerReservation(
-      id_user,
-      role,
-      id_salle,
-      id_creneau,
-      date_reservation,
-      motif,
-      description,
-    );
+//     const resultat = await reservationService.creerReservation(
+//       id_user,
+//       role,
+//       id_salle,
+//       id_creneau,
+//       date_reservation,
+//       motif,
+//       description,
+//     );
 
-    res.status(201).json(resultat);
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
-};
+//     res.status(201).json(resultat);
+//   } catch (err) {
+//     res.status(400).json({ error: err.message });
+//   }
+// };
 
 export const getCreneauxDisponibles = async (req, res) => {
   try {
@@ -53,6 +53,41 @@ export const getCreneauxDisponibles = async (req, res) => {
       date,
     );
     res.status(200).json(creneaux);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+export const creerReservation = async (req, res) => {
+  try {
+    const { id_salle, id_creneau, date_reservation, motif, description } =
+      req.body;
+    const { id: id_user, role, email } = req.user;
+
+    const resultat = await reservationService.creerReservation(
+      id_user,
+      role,
+      email,
+      id_salle,
+      id_creneau,
+      date_reservation,
+      motif,
+      description,
+    );
+
+    res.status(201).json(resultat);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+export const traiterDemande = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { decision } = req.body;
+
+    const resultat = await reservationService.traiterDemande(id, decision);
+    res.status(200).json(resultat);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }

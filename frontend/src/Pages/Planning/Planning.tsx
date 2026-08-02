@@ -100,7 +100,10 @@ const Planning = () => {
         <h1>Planning</h1>
         <p>Plan de l'occupation des salles</p>
 
-        <div className="avatar">RH</div>
+        <div className="avatar">
+          {(localStorage.getItem("prenom")?.[0] ?? "") +
+            (localStorage.getItem("nom")?.[0] ?? "")}
+        </div>
       </div>
 
       <div className="content">

@@ -1,0 +1,30 @@
+.btn-deconnexion {
+  margin-top: 12px;
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #4b5165;
+  background: none;
+  color: #c3c7d6;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.btn-deconnexion:hover {
+  background-color: #2a3350;
+  color: #ffffff;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.navlist {
+  flex: 1;
+}
+
+.sidebar-foot {
+  margin-top: auto;
+}
