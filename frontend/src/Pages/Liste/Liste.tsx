@@ -86,7 +86,10 @@ const Liste = () => {
         <h1>Liste des salles</h1>
         <p>Liste de toutes les salles</p>
 
-        <div className="avatar">RH</div>
+        <div className="avatar">
+          {(localStorage.getItem("prenom")?.[0] ?? "") +
+            (localStorage.getItem("nom")?.[0] ?? "")}
+        </div>
       </div>
 
       <div className="filtre">

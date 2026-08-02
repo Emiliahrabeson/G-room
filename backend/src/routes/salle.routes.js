@@ -1,5 +1,6 @@
 import express from "express";
 import { verifyToken } from "../middleware/auth.middleware.js";
+import { verifyRole } from "../middleware/role.middleware.js";
 import {
   getListe,
   getStatistiques,

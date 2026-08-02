@@ -36,11 +36,11 @@ body {
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: #b9832a;
-  background: #fbf1dd;
+  background: #445170;
   padding: 7px 0;
   border-radius: 999px;
   margin-bottom: 20px;
+  color: #fff;
 }
 
 .app-name {
@@ -97,7 +97,6 @@ form select:hover {
 form input:focus,
 form select:focus {
   background: #ffffff;
-  border-color: #b9832a;
   box-shadow: 0 0 0 3px rgba(185, 131, 42, 0.16);
 }
 
@@ -133,7 +132,6 @@ button:active {
 }
 
 button:focus-visible {
-  outline: 2px solid #b9832a;
   outline-offset: 2px;
 }
 
@@ -161,7 +159,6 @@ button:focus-visible {
 }
 
 .change-form span {
-  color: #b9832a;
   font-weight: bold;
   cursor: pointer;
 }
@@ -181,7 +178,6 @@ button:focus-visible {
   }
 }
 .change-form a {
-  color: #b9832a;
   font-weight: 600;
   text-decoration: none;
 }

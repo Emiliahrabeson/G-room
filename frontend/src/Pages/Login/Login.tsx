@@ -33,6 +33,8 @@ const Login = () => {
       if (res.ok) {
         localStorage.setItem("token", data.token);
         localStorage.setItem("role", data.user.role);
+        localStorage.setItem("nom", data.user.nom);
+        localStorage.setItem("prenom", data.user.prenom);
 
         navigate("/home");
       } else {

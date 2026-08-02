@@ -28,8 +28,15 @@ function getLundiDeLaSemaine() {
   return lundi;
 }
 
+// function formatDateSQL(date) {
+//   return date.toISOString().slice(0, 10); // 2026-07-30
+// }
+
 function formatDateSQL(date) {
-  return date.toISOString().slice(0, 10); // 2026-07-30
+  const annee = date.getFullYear();
+  const mois = String(date.getMonth() + 1).padStart(2, "0");
+  const jour = String(date.getDate()).padStart(2, "0");
+  return `${annee}-${mois}-${jour}`;
 }
 
 function formatHeure(heureStr) {

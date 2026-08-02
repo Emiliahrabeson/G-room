@@ -132,7 +132,10 @@ const Gestion = () => {
         <h1>Gestion des salles</h1>
         <p>Les salles disponibles et non disponibles</p>
 
-        <div className="avatar">RH</div>
+        <div className="avatar">
+          {(localStorage.getItem("prenom")?.[0] ?? "") +
+            (localStorage.getItem("nom")?.[0] ?? "")}
+        </div>
       </div>
 
       <div>

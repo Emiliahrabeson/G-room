@@ -14,17 +14,15 @@ export async function getReservationsAujourdhui() {
 
 export async function getDemande() {
   const sql = `
-    SELECT u.nom, u.role , s.nom as nom_salle, c.heure_debut, r.date_reservation, r.motif, r.statut, c.heure_fin
+    SELECT r.id_reservation, u.nom, u.role, s.nom AS nom_salle, r.motif, r.statut,
+           r.date_reservation, c.heure_debut, c.heure_fin
     FROM reservations r
-    JOIN creneaux c ON c.id_creneau = r.id_creneau
+    JOIN utilisateurs u ON u.id_user = r.id_user
     JOIN salles s ON s.id_salle = r.id_salle
-    JOIN utilisateurs u ON r.id_user = u.id_user
-      AND r.date_reservation >= CURDATE()
+    JOIN creneaux c ON c.id_creneau = r.id_creneau
     ORDER BY r.date_reservation, c.heure_debut;
   `;
-
   const [result] = await db.query(sql);
-
   return result;
 }
 
@@ -112,4 +110,23 @@ export async function getCreneauxDisponibles(id_salle, date_reservation) {
   `;
   const [result] = await db.query(sql, [id_salle, date_reservation]);
   return result;
+}
+
+export async function getReservationDetail(id_reservation) {
+  const sql = `
+    SELECT u.email, u.nom, s.nom AS nom_salle, r.date_reservation, r.motif,
+           c.heure_debut, c.heure_fin
+    FROM reservations r
+    JOIN utilisateurs u ON u.id_user = r.id_user
+    JOIN salles s ON s.id_salle = r.id_salle
+    JOIN creneaux c ON c.id_creneau = r.id_creneau
+    WHERE r.id_reservation = ?;
+  `;
+  const [result] = await db.query(sql, [id_reservation]);
+  return result[0];
+}
+
+export async function changerStatutDemande(id_reservation, statut) {
+  const sql = "UPDATE reservations SET statut = ? WHERE id_reservation = ?;";
+  await db.query(sql, [statut, id_reservation]);
 }
